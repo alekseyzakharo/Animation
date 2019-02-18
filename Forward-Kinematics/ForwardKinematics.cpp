@@ -6,16 +6,11 @@
 /*recursively calculate each joint's global position from the root (in-order traversal)*/
 void ForwardKinematics::calculateJointPosWithQuaternion(Joint* joint)
 {
-	/*----Coding Part Start: Please modify the code accordingly inside these sub-functions-----*/
-	/*Coding Part: 1) calculate current node's global position*/
 	joint->GlobalPos = computeGlobalPosition(joint);
 
-	/*Coding Part: 2) calculate local rotation in quaternion from euler angles for currently accessed node*/
 	Vector4 localQuat = computeLocalQuaternion(joint);
 
-	/*Coding Part: 3) calculate global rotation quaternion for child joints*/
 	joint->Globalquat = computeGlobalQuaternion(joint, localQuat);
-	/*------------------------------coding part end-------------------------------------------*/
 
 	//recursively call self
 	for (int i = 0; i < joint->childNum; i++)
@@ -28,7 +23,6 @@ void ForwardKinematics::calculateJointPosWithQuaternion(Joint* joint)
 //global position and orientation
 Vector4 ForwardKinematics::computeGlobalPosition(Joint* joint)
 {
-	//please add/edit your code here
 	Vector4 LocalGlobalPos = joint->LocalPos;
 	if (joint->parent != NULL)
 	{
@@ -45,7 +39,6 @@ Vector4 ForwardKinematics::computeGlobalPosition(Joint* joint)
 //get local rotation quaternion with frame data and rotation order (euler angle order)
 Vector4 ForwardKinematics::computeLocalQuaternion(Joint* joint)
 {
-	//please add/edit your code here
 	float RadianX = joint->rot_angle1*PI / 180.0;
 	float RadianY = joint->rot_angle2*PI / 180.0;
 	float RadianZ = joint->rot_angle3*PI / 180.0;

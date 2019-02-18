@@ -1,8 +1,6 @@
 #include "InverseKinematics.h"
 #include <vector>
 
-//Aleksey Zakharov 301295506
-
 const double EPSI = 0.000001;
 
 //IK workflow
